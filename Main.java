@@ -12,7 +12,7 @@ public class Main extends JFrame{
 		pack();
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setVisible(true);
-		new Fun();
+		//new Fun();
 	}
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
