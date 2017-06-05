@@ -10,7 +10,7 @@ import javax.swing.JTextField;
 public class MyPanel extends JPanel implements ActionListener{
 	
 	public int x=100,y=100,a=0,b=1,value=0;
-	public Fun operation;
+	//public Fun operation;
 	public String name = "",score = " ";
 	public JButton[][] button = new JButton[4][4];
 	public JTextField Area = new JTextField();
@@ -35,6 +35,7 @@ public class MyPanel extends JPanel implements ActionListener{
 	}
 	@Override
 	public void actionPerformed(ActionEvent e) {
+		Fun operation = new Fun();
 		if(e.getSource() == button[0][0]){
 			name = name.concat("1");
 			Area.setText(name);
@@ -64,9 +65,10 @@ public class MyPanel extends JPanel implements ActionListener{
 		}
 		if(e.getSource() == button[1][3]){
 			a = Integer.valueOf(name);       //konwersja
+			b=a;
 			name = "";
+			value = 2;
 			Area.setText("*");
-			System.out.println(a);
 		}
 		if(e.getSource() == button[2][0]){
 			name = name.concat("7");
@@ -82,9 +84,10 @@ public class MyPanel extends JPanel implements ActionListener{
 		}
 		if(e.getSource() == button[2][3]){
 			a = Integer.valueOf(name);       //konwersja
+			b=a;
 			name = "";
+			value = 3;
 			Area.setText("/");
-			System.out.println(a);
 		}
 		if(e.getSource() == button[3][0]){
 			name = name.concat("0");
@@ -92,21 +95,38 @@ public class MyPanel extends JPanel implements ActionListener{
 			}
 		if(e.getSource() == button[3][1]){    //=
 			a = Integer.valueOf(name);
-			value = a+b;
-			//value = operation.addition(a, b);
+			switch(value)
+			{
+			case 0:
+				value = operation.addition(a, b);
+				break;
+			case 1:
+				value = operation.subtraction(a, b);
+				break;
+			case 2:
+				value = operation.multiplication(a, b);
+				break;
+			case 3:
+				value = operation.division(a, b);
+				break;
+			}
 			score = Integer.toString(value);
 			Area.setText(score);
 		}
 		if(e.getSource() == button[3][2]){
-			name = name.concat("-");
-			Area.setText(name);
+			a = Integer.valueOf(name);       //konwersja
+			b=a;
+			name = "";
+			value = 1;
+			Area.setText("-");
 		}
 		if(e.getSource() == button[3][3]){  //+
 			a = Integer.valueOf(name);       //konwersja
 			b=a;
 			name = "";
+			value = 0;
 			Area.setText("+");
-			System.out.println(b);
+			//System.out.println(b);
 		}
 	}
 }
