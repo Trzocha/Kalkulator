@@ -1,3 +1,0 @@
-# Kalkulator
-W trakcie
-JAVA
